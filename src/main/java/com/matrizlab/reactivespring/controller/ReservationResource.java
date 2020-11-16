@@ -12,10 +12,17 @@ public class ReservationResource {
 
     public static final String ROOM_V_1_RESERVATION = "/room/v1/reservation/";
 
-    @GetMapping(path = "{roomId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "{roomId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<String> getReservationById(@PathVariable String roomId) {
 
         //reservationService.getReservation(roomId);
+
+        return Mono.just("{}");
+    }
+
+    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<String> createReservation(@RequestBody Mono<Reservation> reservation) {
 
         return Mono.just("{}");
     }
