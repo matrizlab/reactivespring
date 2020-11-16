@@ -49,6 +49,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Mono<Boolean> deleteReservation(String id) {
-        return null;
+        return reactiveMongoOperations.remove(
+                Query.query(Criteria.where("id").is(id)), Reservation.class)
+                .flatMap(deleteResult -> Mono.just(deleteResult.wasAcknowledged()));
     }
 }
